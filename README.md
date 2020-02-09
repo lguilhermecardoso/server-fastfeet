@@ -37,6 +37,12 @@ yarn
 ``
 - Crie um banco de dados para aplicação e rode os Seeders:
 
+Agora execute:
+
+    yarn sequelize db:seed:all
+
+
+
 Para subir a API Execute:
 
 ``
@@ -44,11 +50,6 @@ yarn dev
 ``
 
 e sua aplicação estará disponível =)
-
-
-Agora execute:
-
-    yarn sequelize db:seed:all
 
 ## :memo: Licença
 
