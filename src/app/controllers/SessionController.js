@@ -17,11 +17,7 @@ class SessionController {
       return res.status(400).json({ error: 'Validations fails' });
     }
     const { email, password } = req.body;
-    console.log('*******************');
     const user = await User.findOne({ where: { email } });
-
-    console.log('*******************');
-    console.log('User: ', user);
     if (!user) {
       return res.status(401).json({ error: 'User not found' });
     }
