@@ -7,7 +7,7 @@
 </h3>
 
 <h3 align="center">
-  :warning: ULTIMA EPATA FEITA * Etapa 1/4 do Desafio Final :warning:
+  :warning: ULTIMA EPATA FEITA * Etapa 2/4 do Desafio Final :warning:
 </h3>
 
 <p>Esse desafio faz parte do Desafio Final, que é uma aplicação completa Sendo esse codigo o backend da aplicação!</p>
