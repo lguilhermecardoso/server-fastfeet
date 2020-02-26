@@ -6,9 +6,12 @@ class Deliveryman extends Model {
       {
         name: Sequelize.STRING,
         email: Sequelize.STRING,
+        deleted_at: Sequelize.DATE,
       },
       {
         sequelize,
+        freezeTableName: true,
+        tableName: 'deliveryman',
       }
     );
     return this;
