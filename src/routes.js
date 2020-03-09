@@ -11,6 +11,7 @@ import DeliveryManController from './app/controllers/DeliveryManController';
 import DeliveryController from './app/controllers/DeliveryController';
 import DeliveryStatusController from './app/controllers/DeliveryStatusController';
 import DeliveryProblemController from './app/controllers/DeliveryProblemController';
+import NotificationController from './app/controllers/NotificationController';
 
 const routes = new Router();
 
@@ -54,6 +55,13 @@ routes.get('/delivery', DeliveryController.index);
 routes.post('/delivery', DeliveryController.store);
 routes.put('/delivery', DeliveryController.update);
 routes.delete('/delivery/:id', DeliveryController.delete);
+
+routes.get('/notifications', NotificationController.index);
+routes.put('/notifications/:id', NotificationController.update);
+
+routes.get('/delivery/problems', DeliveryProblemController.index);
+routes.get('/delivery/:delivery_id/problems', DeliveryProblemController.show);
+routes.delete('/problem/:id/cancel-delivery', DeliveryProblemController.delete);
 
 routes.post('/files', upload.single('file'), FileController.store);
 
