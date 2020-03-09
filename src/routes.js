@@ -9,6 +9,8 @@ import authMiddleware from './app/middlewares/auth';
 import FileController from './app/controllers/FileController';
 import DeliveryManController from './app/controllers/DeliveryManController';
 import DeliveryController from './app/controllers/DeliveryController';
+import DeliveryStatusController from './app/controllers/DeliveryStatusController';
+import DeliveryProblemController from './app/controllers/DeliveryProblemController';
 
 const routes = new Router();
 
@@ -18,8 +20,21 @@ routes.get('/', (req, res) => {
   res.send('Hello Word');
 });
 
+// Rotas não auth
 routes.post('/sessions', SessionController.store);
 
+// Routes 4 Deliveryman update deliveries
+routes.get('/deliveryman/deliveries', DeliveryStatusController.index);
+routes.get('/deliveryman/:id/deliveries', DeliveryStatusController.show);
+routes.put(
+  '/deliveryman/:deliveryman_id/deliveries',
+  DeliveryStatusController.update
+);
+
+// Routor 4 Deliveryman infor has problem
+routes.post('/delivery/:delivery_id/problems', DeliveryProblemController.store);
+
+routes.post('/files/signature', upload.single('file'), FileController.store);
 // auth routes
 routes.use(authMiddleware);
 

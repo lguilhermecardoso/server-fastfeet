@@ -5,6 +5,9 @@ import Recipient from '../models/Recipient';
 import Deliveryman from '../models/Deliveryman';
 import File from '../models/File';
 
+import OrderMail from '../jobs/OrderMail';
+import Queue from '../../lib/Queue';
+
 class OrderController {
   async index(req, res) {
     const { product_name, page = 1 } = req.query;
@@ -154,7 +157,11 @@ class OrderController {
 
     const { id, product } = await Delivery.create(req.body);
 
-    // Send email to deliveryman who is responsable for delivery
+    await Queue.add(OrderMail.key, {
+      deliverymanExists,
+      recipientExists,
+      product,
+    });
 
     return res.json({
       id,
